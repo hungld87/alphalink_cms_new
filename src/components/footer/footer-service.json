@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_footer_footer_services",
+  "info": {
+    "displayName": "Footer-service",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

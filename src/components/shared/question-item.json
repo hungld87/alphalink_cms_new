@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_question_items",
+  "info": {
+    "displayName": "Question-item",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "Question": {
+      "type": "richtext",
+      "required": true
+    },
+    "Answser": {
+      "type": "richtext",
+      "required": true
+    }
+  },
+  "config": {}
+}

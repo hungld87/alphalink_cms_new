@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "q_and_as",
+  "info": {
+    "singularName": "q-and-a",
+    "pluralName": "q-and-as",
+    "displayName": "Q&A"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "items": {
+      "type": "component",
+      "component": "shared.question-item",
+      "repeatable": true
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

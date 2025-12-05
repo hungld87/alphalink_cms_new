@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_shared_button_items",
+  "info": {
+    "displayName": "Button-item",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string"
+    },
+    "isDisplay": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "config": {}
+}

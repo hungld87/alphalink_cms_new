@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hot_infos",
+  "info": {
+    "singularName": "hot-info",
+    "pluralName": "hot-infos",
+    "displayName": "HotInfo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service",
+      "mappedBy": "hot_info"
+    }
+  }
+}

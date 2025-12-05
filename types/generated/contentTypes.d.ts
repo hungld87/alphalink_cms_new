@@ -430,26 +430,131 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
-  collectionName: 'authors';
+export interface ApiAboutusAboutus extends Struct.SingleTypeSchema {
+  collectionName: 'aboutuses';
   info: {
-    displayName: 'Author';
-    pluralName: 'authors';
-    singularName: 'author';
+    displayName: 'Aboutus';
+    pluralName: 'aboutuses';
+    singularName: 'aboutus';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    avatar: Schema.Attribute.Media<'images' | 'files'>;
-    bio: Schema.Attribute.Text & Schema.Attribute.Required;
+    about: Schema.Attribute.Component<'shared.mission', false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    founders: Schema.Attribute.Relation<'oneToMany', 'api::founder.founder'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::author.author'
+      'api::aboutus.aboutus'
+    > &
+      Schema.Attribute.Private;
+    Mission: Schema.Attribute.Component<'shared.mission', false>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Vision: Schema.Attribute.Component<'shared.mission', false>;
+    whyChoose: Schema.Attribute.Component<'shared.about-why', true>;
+  };
+}
+
+export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
+  collectionName: 'articles';
+  info: {
+    displayName: 'Article';
+    pluralName: 'articles';
+    singularName: 'article';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
+    content: Schema.Attribute.RichText & Schema.Attribute.Required;
+    cover: Schema.Attribute.Media<'images'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::article.article'
+    > &
+      Schema.Attribute.Private;
+    news_category: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::news-category.news-category'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    slug: Schema.Attribute.UID<'title'>;
+    tags: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>;
+    thumb: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCustomerContactCustomerContact
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'customer_contacts';
+  info: {
+    displayName: 'CustomerContact';
+    pluralName: 'customer-contacts';
+    singularName: 'customer-contact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    confirmNote: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::customer-contact.customer-contact'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    note: Schema.Attribute.Text;
+    phone: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFounderFounder extends Struct.CollectionTypeSchema {
+  collectionName: 'founders';
+  info: {
+    displayName: 'Founder';
+    pluralName: 'founders';
+    singularName: 'founder';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    avatar: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::founder.founder'
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
@@ -460,12 +565,12 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
-  collectionName: 'categories';
+export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
+  collectionName: 'globals';
   info: {
-    displayName: 'NewsCategory';
-    pluralName: 'categories';
-    singularName: 'category';
+    displayName: 'Global';
+    pluralName: 'globals';
+    singularName: 'global';
   };
   options: {
     draftAndPublish: true;
@@ -474,15 +579,17 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    footers: Schema.Attribute.Component<'footer.footer-item', false>;
+    headers: Schema.Attribute.Component<'header.header-item', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::category.category'
+      'api::global.global'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
+    Socials: Schema.Attribute.Component<'shared.social-item', true>;
+    theme: Schema.Attribute.Component<'theme.theme-item', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -500,62 +607,86 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
+    banners: Schema.Attribute.Component<'shared.banner-item', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    featuredProjects: Schema.Attribute.Component<
-      'block.featured-projects',
-      true
-    >;
-    heroSlides: Schema.Attribute.Component<'block.hero-slide', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::home.home'> &
       Schema.Attribute.Private;
-    partners: Schema.Attribute.Component<'block.partners', true>;
+    partners: Schema.Attribute.Relation<'oneToMany', 'api::partner.partner'>;
     publishedAt: Schema.Attribute.DateTime;
-    services_section_title: Schema.Attribute.String & Schema.Attribute.Required;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
-export interface ApiNewNew extends Struct.CollectionTypeSchema {
-  collectionName: 'news';
+export interface ApiHotInfoHotInfo extends Struct.CollectionTypeSchema {
+  collectionName: 'hot_infos';
   info: {
-    displayName: 'News';
-    pluralName: 'news';
-    singularName: 'new';
+    displayName: 'HotInfo';
+    pluralName: 'hot-infos';
+    singularName: 'hot-info';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    author: Schema.Attribute.Relation<'oneToOne', 'api::author.author'>;
-    category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
-    content: Schema.Attribute.Text & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    featured_image: Schema.Attribute.Media<'images' | 'files'> &
-      Schema.Attribute.Required;
-    is_featured: Schema.Attribute.Boolean & Schema.Attribute.Required;
-    is_hot: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    email: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::new.new'> &
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hot-info.hot-info'
+    > &
       Schema.Attribute.Private;
+    phone: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    reading_time: Schema.Attribute.Integer;
-    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
-    summary: Schema.Attribute.String & Schema.Attribute.Required;
-    tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
-    thumbnail: Schema.Attribute.Media<'images' | 'files'> &
-      Schema.Attribute.Required;
-    title: Schema.Attribute.Text & Schema.Attribute.Required;
+    services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    views_count: Schema.Attribute.Integer & Schema.Attribute.Required;
+  };
+}
+
+export interface ApiNewsCategoryNewsCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'news_categories';
+  info: {
+    displayName: 'NewsCategory';
+    pluralName: 'news-categories';
+    singularName: 'news-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.Media<'images'>;
+    isDisplay: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::news-category.news-category'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    slug: Schema.Attribute.UID<'title'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -573,13 +704,13 @@ export interface ApiPartnerPartner extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    display: Schema.Attribute.Integer & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::partner.partner'
     > &
       Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -588,12 +719,12 @@ export interface ApiPartnerPartner extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiRecruitmentRecruitment extends Struct.SingleTypeSchema {
-  collectionName: 'recruitments';
+export interface ApiQAndAQAndA extends Struct.SingleTypeSchema {
+  collectionName: 'q_and_as';
   info: {
-    displayName: 'Recruitment';
-    pluralName: 'recruitments';
-    singularName: 'recruitment';
+    displayName: 'Q&A';
+    pluralName: 'q-and-as';
+    singularName: 'q-and-a';
   };
   options: {
     draftAndPublish: true;
@@ -602,11 +733,12 @@ export interface ApiRecruitmentRecruitment extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Jobs: Schema.Attribute.Component<'block.jobs', true>;
+    description: Schema.Attribute.RichText;
+    items: Schema.Attribute.Component<'shared.question-item', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::recruitment.recruitment'
+      'api::q-and-a.q-and-a'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
@@ -631,16 +763,19 @@ export interface ApiServiceCategoryServiceCategory
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    icon: Schema.Attribute.Media<'images'>;
+    isHot: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::service-category.service-category'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
+    slug: Schema.Attribute.UID<'title'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -658,37 +793,28 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    back_ground: Schema.Attribute.Media<'images'>;
-    benefits: Schema.Attribute.Component<'block.benefit-item', true>;
-    category: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::service-category.service-category'
-    >;
+    content: Schema.Attribute.RichText;
+    cover: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.RichText & Schema.Attribute.Required;
-    duration: Schema.Attribute.String & Schema.Attribute.Required;
-    faq: Schema.Attribute.Component<'block.faq-item', true>;
-    featured_image: Schema.Attribute.Media<'images'> &
-      Schema.Attribute.Required;
-    features: Schema.Attribute.Component<'block.feature-item', true>;
-    is_featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    hot_info: Schema.Attribute.Relation<'manyToOne', 'api::hot-info.hot-info'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::service.service'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    price: Schema.Attribute.Integer;
-    process: Schema.Attribute.Component<'block.process-item', true>;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'name'>;
-    summary: Schema.Attribute.Text & Schema.Attribute.Required;
-    support_duration: Schema.Attribute.String & Schema.Attribute.Required;
-    team_size: Schema.Attribute.Integer & Schema.Attribute.Required;
-    thumbnail: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    seo: Schema.Attribute.Component<'shared.seo', true>;
+    service_category: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::service-category.service-category'
+    >;
+    slug: Schema.Attribute.UID<'title'>;
+    thumb: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -698,7 +824,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
 export interface ApiTagTag extends Struct.CollectionTypeSchema {
   collectionName: 'tags';
   info: {
-    displayName: 'Tags';
+    displayName: 'Tag';
     pluralName: 'tags';
     singularName: 'tag';
   };
@@ -706,6 +832,7 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    article: Schema.Attribute.Relation<'manyToOne', 'api::article.article'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -713,7 +840,6 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'> &
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
-    news: Schema.Attribute.Relation<'manyToMany', 'api::new.new'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1231,12 +1357,16 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::author.author': ApiAuthorAuthor;
-      'api::category.category': ApiCategoryCategory;
+      'api::aboutus.aboutus': ApiAboutusAboutus;
+      'api::article.article': ApiArticleArticle;
+      'api::customer-contact.customer-contact': ApiCustomerContactCustomerContact;
+      'api::founder.founder': ApiFounderFounder;
+      'api::global.global': ApiGlobalGlobal;
       'api::home.home': ApiHomeHome;
-      'api::new.new': ApiNewNew;
+      'api::hot-info.hot-info': ApiHotInfoHotInfo;
+      'api::news-category.news-category': ApiNewsCategoryNewsCategory;
       'api::partner.partner': ApiPartnerPartner;
-      'api::recruitment.recruitment': ApiRecruitmentRecruitment;
+      'api::q-and-a.q-and-a': ApiQAndAQAndA;
       'api::service-category.service-category': ApiServiceCategoryServiceCategory;
       'api::service.service': ApiServiceService;
       'api::tag.tag': ApiTagTag;

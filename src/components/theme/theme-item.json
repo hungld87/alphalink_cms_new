@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_theme_theme_items",
+  "info": {
+    "displayName": "Theme-item",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "key": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

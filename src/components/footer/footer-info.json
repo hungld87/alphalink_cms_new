@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_footer_footer_infos",
+  "info": {
+    "displayName": "Footer-info",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "companyName": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}

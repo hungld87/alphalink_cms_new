@@ -4,7 +4,7 @@
   "info": {
     "singularName": "tag",
     "pluralName": "tags",
-    "displayName": "Tags"
+    "displayName": "Tag"
   },
   "options": {
     "draftAndPublish": true
@@ -15,10 +15,10 @@
       "type": "string",
       "required": true
     },
-    "news": {
+    "article": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::new.new",
+      "relation": "manyToOne",
+      "target": "api::article.article",
       "inversedBy": "tags"
     }
   }

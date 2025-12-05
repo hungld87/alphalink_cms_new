@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_search_items",
+  "info": {
+    "displayName": "Search-item",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "placeHolder": {
+      "type": "string"
+    },
+    "isDisplay": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "config": {}
+}

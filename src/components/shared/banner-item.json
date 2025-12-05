@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_shared_banner_items",
+  "info": {
+    "displayName": "Banner-item",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "link": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

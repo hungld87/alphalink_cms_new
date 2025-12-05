@@ -11,39 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "title": {
       "type": "string",
       "required": true
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "name"
-    },
-    "summary": {
-      "type": "text",
-      "required": true
-    },
-    "price": {
-      "type": "integer"
-    },
-    "duration": {
-      "type": "string",
-      "required": true
-    },
-    "team_size": {
-      "type": "integer",
-      "required": true
-    },
-    "support_duration": {
-      "type": "string",
-      "required": true
-    },
-    "is_featured": {
-      "type": "boolean",
-      "required": false,
-      "default": true
-    },
-    "thumbnail": {
+    "thumb": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -51,10 +23,9 @@
         "images"
       ]
     },
-    "featured_image": {
+    "cover": {
       "type": "media",
       "multiple": false,
-      "required": true,
       "allowedTypes": [
         "images"
       ]
@@ -63,38 +34,29 @@
       "type": "richtext",
       "required": true
     },
-    "features": {
-      "type": "component",
-      "component": "block.feature-item",
-      "repeatable": true
+    "content": {
+      "type": "richtext"
     },
-    "benefits": {
-      "type": "component",
-      "component": "block.benefit-item",
-      "repeatable": true
-    },
-    "process": {
-      "type": "component",
-      "component": "block.process-item",
-      "repeatable": true
-    },
-    "faq": {
-      "type": "component",
-      "component": "block.faq-item",
-      "repeatable": true
-    },
-    "category": {
+    "service_category": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::service-category.service-category"
+      "relation": "manyToOne",
+      "target": "api::service-category.service-category",
+      "inversedBy": "services"
     },
-    "back_ground": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+    "seo": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "hot_info": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::hot-info.hot-info",
+      "inversedBy": "services"
     }
   }
 }

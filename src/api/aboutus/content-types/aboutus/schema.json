@@ -1,0 +1,40 @@
+{
+  "kind": "singleType",
+  "collectionName": "aboutuses",
+  "info": {
+    "singularName": "aboutus",
+    "pluralName": "aboutuses",
+    "displayName": "Aboutus"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "founders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::founder.founder"
+    },
+    "Mission": {
+      "type": "component",
+      "component": "shared.mission",
+      "repeatable": false
+    },
+    "Vision": {
+      "type": "component",
+      "component": "shared.mission",
+      "repeatable": false
+    },
+    "about": {
+      "type": "component",
+      "component": "shared.mission",
+      "repeatable": false
+    },
+    "whyChoose": {
+      "type": "component",
+      "component": "shared.about-why",
+      "repeatable": true
+    }
+  }
+}

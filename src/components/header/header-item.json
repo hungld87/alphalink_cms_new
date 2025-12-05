@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_header_header_items",
+  "info": {
+    "displayName": "Header-item",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "companyName": {
+      "type": "string",
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Search": {
+      "type": "component",
+      "component": "shared.search-item",
+      "repeatable": false
+    },
+    "Button": {
+      "type": "component",
+      "component": "shared.button-item",
+      "repeatable": false
+    },
+    "QuickMenu": {
+      "type": "component",
+      "component": "shared.menu-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

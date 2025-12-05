@@ -11,24 +11,30 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "heroSlides": {
+    "banners": {
       "type": "component",
-      "component": "block.hero-slide",
+      "component": "shared.banner-item",
       "repeatable": true
     },
-    "services_section_title": {
-      "type": "string",
-      "required": true
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article"
     },
     "partners": {
-      "type": "component",
-      "component": "block.partners",
-      "repeatable": true
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::partner.partner"
     },
-    "featuredProjects": {
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service"
+    },
+    "seo": {
       "type": "component",
-      "component": "block.featured-projects",
-      "repeatable": true
+      "component": "shared.seo",
+      "repeatable": false
     }
   }
 }

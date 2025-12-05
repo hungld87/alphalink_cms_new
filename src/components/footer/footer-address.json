@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_footer_footer_addresses",
+  "info": {
+    "displayName": "Footer-address",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "address": {
+      "type": "text"
+    },
+    "map": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

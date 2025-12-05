@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_footer_footer_items",
+  "info": {
+    "displayName": "Footer-item",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "companyInfo": {
+      "type": "component",
+      "component": "footer.footer-info",
+      "repeatable": false
+    },
+    "services": {
+      "type": "component",
+      "component": "footer.footer-service",
+      "repeatable": true
+    },
+    "about": {
+      "type": "component",
+      "component": "footer.footer-service",
+      "repeatable": true
+    },
+    "address": {
+      "type": "component",
+      "component": "footer.footer-address",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

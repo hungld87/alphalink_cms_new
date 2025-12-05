@@ -1,0 +1,9 @@
+{
+  "name": "math-chem",
+  "version": "1.0.0",
+  "description": "Math and Chemistry plugin for Strapi v5",
+  "strapi": {
+    "kind": "plugin",
+    "name": "math-chem"
+  }
+}

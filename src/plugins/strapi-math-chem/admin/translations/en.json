@@ -1,0 +1,12 @@
+{
+  "mathchem.label": "Math & Chemistry",
+  "mathchem.description": "Mathematical and chemical formulas with LaTeX support",
+  "mathchem.settings": "Settings",
+  "mathchem.advanced": "Advanced settings",
+  "mathchem.options.required": "Required field",
+  "mathchem.options.required.description": "Make this field required",
+  "mathchem.options.placeholder": "Placeholder",
+  "mathchem.options.placeholder.description": "Placeholder text for the field",
+  "mathchem.options.maxLength": "Maximum length",
+  "mathchem.options.maxLength.description": "Maximum number of characters allowed"
+}

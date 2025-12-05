@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "recruitments",
+  "info": {
+    "singularName": "recruitment",
+    "pluralName": "recruitments",
+    "displayName": "Recruitment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Jobs": {
+      "type": "component",
+      "component": "block.jobs",
+      "repeatable": true
+    }
+  }
+}

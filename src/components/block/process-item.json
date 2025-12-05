@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_block_process_items",
+  "info": {
+    "displayName": "processItem"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  },
+  "config": {}
+}

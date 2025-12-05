@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_block_primary_actions",
+  "info": {
+    "displayName": "primaryAction"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "action": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

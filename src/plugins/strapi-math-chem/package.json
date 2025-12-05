@@ -1,0 +1,54 @@
+{
+  "name": "strapi-math-chem",
+  "version": "1.0.0",
+  "description": "A Strapi plugin for mathematical and chemical formulas with LaTeX support",
+  "keywords": [
+    "strapi",
+    "plugin",
+    "math",
+    "chemistry",
+    "latex",
+    "formulas"
+  ],
+  "author": {
+    "name": "HungLD",
+    "email": "hungld7.dna@example.com"
+  },
+  "maintainers": [
+    {
+      "name": "HungLD",
+      "email": "hungld7.dna@example.com"
+    }
+  ],
+  "engines": {
+    "node": ">=18.0.0 <=22.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "name": "strapi-math-chem",
+    "description": "Mathematical and Chemical formulas with LaTeX support",
+    "kind": "plugin",
+    "displayName": "Math & Chemistry"
+  },
+  "dependencies": {
+    "react-mathquill": "^0.10.1-a",
+    "katex": "^0.16.25",
+    "mhchemparser": "^4.2.1"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^5.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "styled-components": "^6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devios327/strapi-math-chem.git"
+  },
+  "bugs": {
+    "url": "https://github.com/devios327/strapi-math-chem/issues"
+  },
+  "homepage": "https://github.com/devios327/strapi-math-chem#readme",
+  "license": "MIT"
+}

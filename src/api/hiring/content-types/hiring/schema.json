@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hirings",
+  "info": {
+    "singularName": "hiring",
+    "pluralName": "hirings",
+    "displayName": "Hiring"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "desription": {
+      "type": "richtext",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    }
+  }
+}

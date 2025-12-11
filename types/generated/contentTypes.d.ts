@@ -596,6 +596,36 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiHiringHiring extends Struct.CollectionTypeSchema {
+  collectionName: 'hirings';
+  info: {
+    displayName: 'Hiring';
+    pluralName: 'hirings';
+    singularName: 'hiring';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    desription: Schema.Attribute.RichText & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hiring.hiring'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHomeHome extends Struct.SingleTypeSchema {
   collectionName: 'homes';
   info: {
@@ -1362,6 +1392,7 @@ declare module '@strapi/strapi' {
       'api::customer-contact.customer-contact': ApiCustomerContactCustomerContact;
       'api::founder.founder': ApiFounderFounder;
       'api::global.global': ApiGlobalGlobal;
+      'api::hiring.hiring': ApiHiringHiring;
       'api::home.home': ApiHomeHome;
       'api::hot-info.hot-info': ApiHotInfoHotInfo;
       'api::news-category.news-category': ApiNewsCategoryNewsCategory;
